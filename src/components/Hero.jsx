@@ -1,102 +1,70 @@
-import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import React from "react";
 
-export default function Hero() {
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  }
-
+const Hero = () => {
   return (
-    <section id="hero" className="pt-32 md:pt-40 pb-20 px-4 bg-dark">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.h1
-              variants={itemVariants}
-              className="text-5xl md:text-6xl font-bold text-white leading-tight mb-6 font-sans"
-            >
-              AI automation that scales agencies
-            </motion.h1>
+    <section className="w-full bg-[#262626] text-white">
+      <div className="max-w-7xl mx-auto px-10 py-24">
+        
+        {/* EXACT FLEX ROW */}
+        <div className="flex flex-row items-start justify-between gap-10">
 
-            <motion.p
-              variants={itemVariants}
-              className="text-lg text-gray-300 mb-8 leading-relaxed max-w-xl"
+          {/* LEFT TEXT BLOCK */}
+          <div className="max-w-[550px]">
+            <h1
+              className="font-semibold leading-[1.05]"
+              style={{
+                fontSize: "60px",
+                letterSpacing: "-0.02em",
+              }}
             >
-              We build automation workflows, AI agents, and data pipelines that eliminate bottlenecks and help agencies grow without adding headcount.
-            </motion.p>
+              AI automation that<br />scales agencies
+            </h1>
 
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col md:flex-row gap-4"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection('contact')}
-                className="bg-yellowBrand text-dark px-8 py-3 rounded-lg font-semibold text-lg hover:bg-yellow-400 transition-all duration-300 shadow-lg hover:shadow-xl w-fit"
+            <p className="text-[#d1d1d1] mt-6 text-[20px] leading-[1.7]">
+              We build automation workflows, AI agents, and data pipelines that
+              eliminate bottlenecks and help agencies grow without adding
+              headcount.
+            </p>
+
+            <div className="flex gap-4 mt-8">
+              <button
+                className="px-6 py-3 rounded-xl font-medium"
+                style={{
+                  backgroundColor: "#f3d66f",
+                  color: "#000",
+                }}
               >
                 Book a call
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection('portfolio')}
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-white hover:text-dark transition-all duration-300 w-fit"
-              >
-                Case studies
-              </motion.button>
-            </motion.div>
-          </motion.div>
+              </button>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative"
-          >
-            <div className="rounded-2xl overflow-hidden shadow-2xl">
-              <div className="bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-200 aspect-video flex items-center justify-center relative">
-                <div className="absolute inset-0 bg-black/10"></div>
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  className="relative z-10 text-center"
-                >
-                  <div className="text-6xl mb-4">📊</div>
-                  <p className="text-dark font-bold text-lg">AI Automation Dashboard</p>
-                </motion.div>
+              <button className="px-6 py-3 rounded-xl font-medium border border-[#3a3a3a] text-[#dcdcdc]">
+                Case studies
+              </button>
+            </div>
+          </div>
+
+          {/* RIGHT IMAGE PLACEHOLDER */}
+          <div className="flex justify-end w-full">
+            <div
+              className="rounded-2xl overflow-hidden"
+              style={{
+                width: "600px",
+                height: "400px",
+                backgroundColor: "#3a3a3a",
+                border: "1px solid rgba(255,255,255,0.05)",
+              }}
+            >
+              <div className="w-full h-full flex items-center justify-center text-gray-400">
+                IMAGE HERE
               </div>
             </div>
-          </motion.div>
+          </div>
+
         </div>
+
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default Hero;

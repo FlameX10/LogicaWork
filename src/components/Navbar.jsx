@@ -1,95 +1,64 @@
-import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
-import { motion } from 'framer-motion'
+import React from "react";
+// If you have lucide-react installed, uncomment this and remove the SVG chevron below
+// import { ChevronDown } from "lucide-react";
 
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+const Chevron = ({ className = "inline-block ml-1 w-3 h-3" }) => (
+  // tiny chevron svg that matches screenshot scale
+  <svg
+    className={className}
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path d="M6 7l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
 
-  const scrollToSection = (id) => {
-    setIsOpen(false)
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
-  const navItems = [
-    { label: 'Solutions', id: 'services' },
-    { label: 'About', id: 'about' },
-    { label: 'Work', id: 'portfolio' },
-    { label: 'Contact', id: 'contact' },
-  ]
-
+const Navbar = () => {
   return (
-    <nav className="fixed top-0 w-full z-50 bg-dark border-b border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex-shrink-0"
-          >
-            <h1 className="text-2xl md:text-3xl font-bold text-white font-sans">
-              ✨ LogicaWork
-            </h1>
-          </motion.div>
-
-          <div className="hidden md:flex items-center gap-12">
-            {navItems.map((item, idx) => (
-              <motion.button
-                key={item.id}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                onClick={() => scrollToSection(item.id)}
-                className="text-gray-300 font-medium hover:text-yellowBrand transition-colors duration-300"
-              >
-                {item.label}
-              </motion.button>
-            ))}
+    <nav className="w-full bg-[#262626] text-white border-b border-black">
+      <div className="relative max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+        {/* Left logo */}
+        <div className="flex items-center gap-3 z-20">
+          <div className="w-8 h-8 bg-[#2b2b2b] rounded-md flex items-center justify-center">
+            {/* stylized square icon */}
+            <div className="w-3.5 h-3.5 bg-white rounded-sm" />
           </div>
-
-          <motion.button
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            onClick={() => scrollToSection('contact')}
-            className="hidden md:block bg-yellowBrand text-dark px-6 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-all duration-300"
-          >
-            Get started
-          </motion.button>
-
-          <button
-            className="md:hidden text-white text-2xl"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+          <span className="text-white text-lg font-medium">LogicaWork</span>
         </div>
 
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden pb-4 border-t border-gray-800"
+        {/* Center menu - absolutely centered so it's visually centered like your screenshot */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+          <div className="flex items-center gap-8 text-sm text-[#d7d7d7]">
+            <div className="flex items-center gap-1 cursor-pointer hover:text-white">
+              <span className="select-none">Solutions</span>
+              <Chevron />
+            </div>
+
+            <div className="cursor-pointer hover:text-white select-none">About</div>
+
+            <div className="cursor-pointer hover:text-white select-none">Blog</div>
+
+            <div className="flex items-center gap-1 cursor-pointer hover:text-white select-none">
+              <span>Support</span>
+              <Chevron />
+            </div>
+          </div>
+        </div>
+
+        {/* Right CTA */}
+        <div className="z-20">
+          <button
+            className="bg-[#f3d66f] text-black px-4 py-2 rounded-full font-medium shadow-sm hover:bg-[#e7c957] transition"
+            aria-label="Get started"
           >
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left py-2 px-4 text-gray-300 hover:text-yellowBrand transition-colors"
-              >
-                {item.label}
-              </button>
-            ))}
-            <button onClick={() => scrollToSection('contact')} className="block w-full mt-2 bg-yellowBrand text-dark px-4 py-2 rounded-lg font-semibold">
-              Get started
-            </button>
-          </motion.div>
-        )}
+            Get started
+          </button>
+        </div>
       </div>
     </nav>
-  )
-}
+  );
+};
+
+export default Navbar;
