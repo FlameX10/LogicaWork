@@ -1,1 +1,71 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
+  background: #000000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lexend', sans-serif;
+  font-weight: 700;
+}
+
+.glass {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 211, 0, 0.2);
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  font-family: 'Lexend', sans-serif;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 3.75rem;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #FFD300 0%, #FFA500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-shadow {
+  box-shadow: 0 10px 40px rgba(255, 211, 0, 0.15);
+}
+
+.card-shadow-lg {
+  box-shadow: 0 20px 60px rgba(255, 211, 0, 0.25);
+}
+
+.glow-yellow {
+  box-shadow: 0 0 20px rgba(255, 211, 0, 0.5);
+}
+
+.border-glow {
+  border: 2px solid rgba(255, 211, 0, 0.3);
+}
+
+.section-black {
+  background: #000000;
+}
+
+.section-dark {
+  background: #0a0a0a;
+}
