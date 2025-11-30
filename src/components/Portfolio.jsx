@@ -22,7 +22,7 @@ const Portfolio = () => {
 
   return (
     <section className="w-full bg-[#F7F0DF] py-28 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
+      <div className="max-w-7xl mx-auto flex flex-row gap-16">
 
         {/* LEFT SIDE */}
         <div>
@@ -44,7 +44,7 @@ const Portfolio = () => {
         <div className="flex flex-col space-y-10">
           {faqs.map((item, i) => (
             <div key={i} className="pb-10 border-b border-[#e4dcc8]">
-              <h3 className="text-2xl font-medium text-[#1b1b1b] mb-3">
+              <h3 className="text-2xl font-medium text-[#1b1b1b] mb-1">
                 {item.q}
               </h3>
               <p className="text-[#555] text-[17px] leading-relaxed max-w-xl">

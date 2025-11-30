@@ -61,7 +61,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" ref={sectionRef} className="py-32 px-6 bg-white">
+    <section id="about" ref={sectionRef} className="py-32 px-6 bg-gradient-to-b from-[#ffffff] to-white">
       <div className="max-w-7xl mx-auto">
 
         {/* ✔ Fixed layout: LEFT text, RIGHT grid */}

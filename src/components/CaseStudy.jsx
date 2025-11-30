@@ -77,7 +77,7 @@ export default function CaseStudy() {
     <section 
       id="case-study" 
       ref={sectionRef}
-      className="relative py-24 px-4 bg-[#F4EFE4]"
+      className="relative py-24 px-4 bg-[#f1dcb2] "
     >
       <div className="max-w-7xl mx-auto">
         
