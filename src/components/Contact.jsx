@@ -27,7 +27,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" ref={ref} className="py-24 px-4 bg-white">
+    <section id="contact" ref={ref} className="py-24 px-4 bg-black">
       <div className="max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,9 +35,9 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="section-title">Let's automate your agency now</h2>
-          <p className="text-gray-600 text-lg">
-            Ready to ditch manual work? Book a free strategy call and see how AI can supercharge your workflow—no more bottlenecks, just growth.
+          <h2 className="section-title">Let's automate your <span className="text-yellowBrand">agency</span> now</h2>
+          <p className="text-gray-400 text-lg">
+            Ready to eliminate manual work? Book a free strategy call and see how AI can transform your workflow.
           </p>
         </motion.div>
 
@@ -56,7 +56,7 @@ export default function Contact() {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-dark placeholder-gray-500 focus:outline-none focus:border-yellowBrand transition-all"
+              className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-yellowBrand focus:bg-gray-800 transition-all"
             />
             <input
               type="email"
@@ -65,7 +65,7 @@ export default function Contact() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-dark placeholder-gray-500 focus:outline-none focus:border-yellowBrand transition-all"
+              className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-yellowBrand focus:bg-gray-800 transition-all"
             />
           </div>
 
@@ -76,7 +76,7 @@ export default function Contact() {
               placeholder="Company Name"
               value={formData.company}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-dark placeholder-gray-500 focus:outline-none focus:border-yellowBrand transition-all"
+              className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-yellowBrand focus:bg-gray-800 transition-all"
             />
             <input
               type="url"
@@ -84,7 +84,7 @@ export default function Contact() {
               placeholder="Your Website"
               value={formData.website}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-dark placeholder-gray-500 focus:outline-none focus:border-yellowBrand transition-all"
+              className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-yellowBrand focus:bg-gray-800 transition-all"
             />
           </div>
 
@@ -95,14 +95,14 @@ export default function Contact() {
             onChange={handleChange}
             required
             rows="5"
-            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-dark placeholder-gray-500 focus:outline-none focus:border-yellowBrand transition-all resize-none"
+            className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-yellowBrand focus:bg-gray-800 transition-all resize-none"
           ></textarea>
 
           <motion.button
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 211, 0, 0.3)" }}
             whileTap={{ scale: 0.95 }}
             type="submit"
-            className="w-full bg-yellowBrand text-dark px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-400 transition-all shadow-lg hover:shadow-xl"
+            className="w-full bg-yellowBrand text-black px-8 py-4 rounded-xl font-bold text-lg hover:bg-yellow-400 transition-all shadow-lg hover:shadow-xl"
           >
             Book a Free Strategy Call
           </motion.button>
@@ -112,7 +112,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
-              className="p-4 bg-green-50 border border-green-200 text-green-700 rounded-lg text-center font-semibold"
+              className="p-4 bg-green-500/20 border border-green-500 text-green-400 rounded-lg text-center font-semibold"
             >
               ✓ Thank you! We'll be in touch soon.
             </motion.div>

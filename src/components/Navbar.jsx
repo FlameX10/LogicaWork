@@ -17,7 +17,7 @@ const Chevron = ({ className = "inline-block ml-1 w-3 h-3" }) => (
 
 const Navbar = () => {
   return (
-    <nav className="w-full bg-[#262626] text-white border-b border-black">
+    <nav className="w-full bg-[#252525] text-white border-b border-black">
       <div className="relative max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         {/* Left logo */}
         <div className="flex items-center gap-3 z-20">

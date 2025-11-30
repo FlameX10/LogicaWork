@@ -1,77 +1,62 @@
-import { motion } from 'framer-motion'
-import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import React from "react";
 
-export default function Portfolio() {
-  const { ref, inView } = useScrollAnimation()
-
-  const projects = [
+const Portfolio = () => {
+  const faqs = [
     {
-      tag: 'LEAD & CRM AUTOMATION',
-      title: 'Leads scored. Deals closed. Fast.',
-      description: 'Auto-score, enrich, and sync leads. Trigger outreach and CRM updates—never miss a hot lead again.',
-      bg: 'bg-gradient-to-br from-orange-100 to-orange-50'
+      q: "What’s included with setup?",
+      a: "We handle workflow mapping, custom AI agent design, data integration, and onboarding. Every system is tailored—no one-size-fits-all.",
     },
     {
-      tag: 'AD PLATFORM AUTOMATION',
-      title: 'Ad data, handled automatically',
-      description: 'Sync Meta, Google, LinkedIn ad data. Clean, report, and automate—no more spreadsheets or manual updates.',
-      bg: 'bg-gradient-to-br from-blue-100 to-blue-50'
+      q: "How fast can we launch?",
+      a: "Most projects go live in 2–4 weeks. We keep you in the loop, every step of the way.",
     },
-  ]
+    {
+      q: "Can you connect to our tools?",
+      a: "Yes! We integrate with all major ad platforms, CRMs, and reporting tools. If it has an API, we automate it.",
+    },
+    {
+      q: "What support comes after launch?",
+      a: "You get ongoing support, performance checks, and quick updates as your needs change. We keep your automations humming.",
+    },
+  ];
 
   return (
-    <section id="portfolio" ref={ref} className="py-24 px-4 bg-gray-50">
-      <div className="max-w-7xl mx-auto">
-        {projects.map((project, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: i * 0.2 }}
-            className="mb-20 last:mb-0"
-          >
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              {i % 2 === 0 ? (
-                <>
-                  <div className={`${project.bg} rounded-2xl aspect-square flex items-center justify-center`}>
-                    <span className="text-7xl">{i === 0 ? '📊' : '💼'}</span>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider">{project.tag}</p>
-                    <h3 className="text-3xl md:text-4xl font-bold text-dark mb-4">{project.title}</h3>
-                    <p className="text-gray-600 text-lg leading-relaxed">{project.description}</p>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="mt-6 bg-yellowBrand text-dark px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-all"
-                    >
-                      Explore
-                    </motion.button>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div>
-                    <p className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider">{project.tag}</p>
-                    <h3 className="text-3xl md:text-4xl font-bold text-dark mb-4">{project.title}</h3>
-                    <p className="text-gray-600 text-lg leading-relaxed">{project.description}</p>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="mt-6 bg-yellowBrand text-dark px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-all"
-                    >
-                      Explore
-                    </motion.button>
-                  </div>
-                  <div className={`${project.bg} rounded-2xl aspect-square flex items-center justify-center`}>
-                    <span className="text-7xl">{i === 0 ? '📊' : '💼'}</span>
-                  </div>
-                </>
-              )}
+    <section className="w-full bg-[#F7F0DF] py-28 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
+
+        {/* LEFT SIDE */}
+        <div>
+          <h1 className="text-5xl font-medium text-[#1b1b1b] leading-tight mb-6">
+            Your AI automation questions,<br />answered
+          </h1>
+
+          <p className="text-[#555] text-lg leading-relaxed mb-10 max-w-md">
+            No jargon. No fluff. Just clear, fast answers to your top automation
+            questions—so you can scale smarter, not harder.
+          </p>
+
+          <button className="bg-[#FFDF68] hover:bg-[#f9d859] transition-colors text-black text-lg px-10 py-4 rounded-xl">
+            Ask now
+          </button>
+        </div>
+
+        {/* RIGHT SIDE FAQ LIST */}
+        <div className="flex flex-col space-y-10">
+          {faqs.map((item, i) => (
+            <div key={i} className="pb-10 border-b border-[#e4dcc8]">
+              <h3 className="text-2xl font-medium text-[#1b1b1b] mb-3">
+                {item.q}
+              </h3>
+              <p className="text-[#555] text-[17px] leading-relaxed max-w-xl">
+                {item.a}
+              </p>
             </div>
-          </motion.div>
-        ))}
+          ))}
+        </div>
+
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default Portfolio;

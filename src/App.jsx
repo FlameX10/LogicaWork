@@ -18,9 +18,10 @@ function App() {
       <SocialProof />
       <Services />
       <CaseStudy />
-      <Portfolio />
-      <Process />
+      
+      {/* <Process /> */}
       <About />
+      <Portfolio />
       <Contact />
       <Footer />
     </div>

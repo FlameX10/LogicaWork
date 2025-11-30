@@ -1,7 +1,4 @@
-
-
-/* index.css (or similar) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
   --hero-bg: #262626;
@@ -34,9 +31,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 211, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .section-title {
@@ -54,32 +51,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #FFD300 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #FFD300 0%, #ffc000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .card-shadow {
-  box-shadow: 0 10px 40px rgba(255, 211, 0, 0.15);
+  box-shadow: 0 10px 40px rgba(255, 211, 0, 0.1);
 }
 
 .card-shadow-lg {
-  box-shadow: 0 20px 60px rgba(255, 211, 0, 0.25);
+  box-shadow: 0 20px 60px rgba(255, 211, 0, 0.15);
 }
 
-.glow-yellow {
-  box-shadow: 0 0 20px rgba(255, 211, 0, 0.5);
-}
-
-.border-glow {
-  border: 2px solid rgba(255, 211, 0, 0.3);
-}
-
-.section-black {
+.bg-dark-primary {
   background: #000000;
 }
 
-.section-dark {
+.bg-dark-secondary {
   background: #0a0a0a;
+}
+
+.text-yellow-brand {
+  color: #FFD300;
 }

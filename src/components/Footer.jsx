@@ -24,7 +24,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-dark text-white border-t border-gray-800">
+    <footer className="bg-black text-white border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -93,7 +93,7 @@ export default function Footer() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('contact')}
-              className="w-full bg-gradient-to-r from-yellowBrand to-yellow-400 text-dark px-6 py-3 rounded-lg font-bold text-sm hover:shadow-lg transition-all flex items-center justify-center gap-2"
+              className="w-full bg-gradient-to-r from-yellowBrand to-yellow-400 text-black px-6 py-3 rounded-lg font-bold text-sm hover:shadow-lg transition-all flex items-center justify-center gap-2"
             >
               Get Started
               <ArrowRight size={16} />
