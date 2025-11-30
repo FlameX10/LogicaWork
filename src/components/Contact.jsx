@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import { useScrollAnimation } from "../hooks/useScrollAnimation"
 import { useState } from "react"
+import last from '../assets/last.jpg';
 
 export default function Contact() {
   const { ref, inView } = useScrollAnimation()
@@ -21,7 +22,7 @@ export default function Contact() {
           className="rounded-2xl overflow-hidden shadow-xl"
         >
           <img
-            src="/your-image.png"   // <-- Replace with actual path
+            src={last}   // <-- Replace with actual path
             alt="Office workspace"
             className="w-full rounded-2xl"
           />

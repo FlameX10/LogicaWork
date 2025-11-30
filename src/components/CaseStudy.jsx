@@ -1,5 +1,11 @@
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
+import one from '../assets/one1.png'
+import two from '../assets/two2.png'
+import three from '../assets/three3.png'
+import four from '../assets/four4.jpg'
+import five from '../assets/five5.png'
+import six from '../assets/six6.png'
 
 export default function CaseStudy() {
   const [isVisible, setIsVisible] = useState(false)
@@ -23,6 +29,20 @@ export default function CaseStudy() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Image mapping - add your images here as you add them to the assets folder
+  const imageMap = {
+    'one': one,
+    // Add more images here as you add them:
+    'two':two,
+    'three': three,
+    'four': four,
+    'five': five,
+    'six': six,
+    // 'analytics-screen': analyticsScreen,
+    // 'tv-dashboard': tvDashboard,
+    // 'whiteboard-meeting': whiteboardMeeting,
+  }
+
   // First Row - Workflow Hacks, Smart Scaling, Tool Spotlight
   const topRowStudies = [
     {
@@ -30,21 +50,21 @@ export default function CaseStudy() {
       title: "Automate reports in minutes",
       desc: "Cut reporting time, boost accuracy, and let your team focus on what matters.",
       bgColor: "from-[#C8D4B8] to-[#D8E4C8]",
-      bgImage: "laptop-dashboard"
+      bgImage: "one"
     },
     {
       tag: "SMART SCALING",
       title: "Grow fast, hire less",
       desc: "Unlock agency growth with clever systems—no extra hires needed.",
       bgColor: "from-[#B8C8B0] to-[#C8D8C0]",
-      bgImage: "team-meeting"
+      bgImage: "two"
     },
     {
       tag: "TOOL SPOTLIGHT",
       title: "Pick your perfect AI stack",
       desc: "Find automation platforms that fit your workflow and budget.",
       bgColor: "from-[#A8D4D4] to-[#B8E4E4]",
-      bgImage: "tablet-app"
+      bgImage: "three"
     }
   ]
 
@@ -55,21 +75,21 @@ export default function CaseStudy() {
       title: "Lead gen, fully automated",
       desc: "See how one agency slashed manual lead work with a custom AI flow.",
       bgColor: "from-[#D4C8E4] to-[#E4D8F4]",
-      bgImage: "analytics-screen"
+      bgImage: "four"
     },
     {
       tag: "ONBOARDING WINS",
       title: "Frictionless client onboarding",
       desc: "Make onboarding a breeze with simple automations from call to launch.",
       bgColor: "from-[#E4D8C8] to-[#F4E8D8]",
-      bgImage: "tv-dashboard"
+      bgImage: "five"
     },
     {
       tag: "AI TRENDS",
       title: "Next-gen marketing moves",
       desc: "Catch up on the hottest AI trends shaping digital marketing this year.",
       bgColor: "from-[#F4D0D0] to-[#FFE0E0]",
-      bgImage: "whiteboard-meeting"
+      bgImage: "six"
     }
   ]
 
@@ -108,18 +128,27 @@ export default function CaseStudy() {
             >
               {/* Image Container */}
               <motion.div
-                className={`relative overflow-hidden rounded-3xl aspect-[4/3] mb-4 bg-gradient-to-br ${study.bgColor} shadow-lg`}
+                className="relative overflow-hidden rounded-3xl aspect-[4/3] mb-4 shadow-lg group/image"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.5 }}
               >
-                {/* Placeholder for actual images */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-6xl opacity-20">
-                    {study.bgImage === 'laptop-dashboard' && '💻'}
-                    {study.bgImage === 'team-meeting' && '👥'}
-                    {study.bgImage === 'tablet-app' && '📱'}
+                {imageMap[study.bgImage] ? (
+                  <img
+                    src={imageMap[study.bgImage]}
+                    alt={study.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover/image:scale-110"
+                  />
+                ) : (
+                  <div className={`w-full h-full bg-gradient-to-br ${study.bgColor} flex items-center justify-center`}>
+                    <div className="text-6xl opacity-20">
+                      {study.bgImage === 'laptop-dashboard' && '💻'}
+                      {study.bgImage === 'team-meeting' && '👥'}
+                      {study.bgImage === 'tablet-app' && '📱'}
+                    </div>
                   </div>
-                </div>
+                )}
+                {/* Overlay gradient for better text readability if needed */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-300" />
               </motion.div>
 
               {/* Content */}
@@ -154,18 +183,27 @@ export default function CaseStudy() {
             >
               {/* Image Container */}
               <motion.div
-                className={`relative overflow-hidden rounded-3xl aspect-[4/3] mb-4 bg-gradient-to-br ${study.bgColor} shadow-lg`}
+                className="relative overflow-hidden rounded-3xl aspect-[4/3] mb-4 shadow-lg group/image"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.5 }}
               >
-                {/* Placeholder for actual images */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-6xl opacity-20">
-                    {study.bgImage === 'analytics-screen' && '📊'}
-                    {study.bgImage === 'tv-dashboard' && '📺'}
-                    {study.bgImage === 'whiteboard-meeting' && '🤝'}
+                {imageMap[study.bgImage] ? (
+                  <img
+                    src={imageMap[study.bgImage]}
+                    alt={study.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover/image:scale-110"
+                  />
+                ) : (
+                  <div className={`w-full h-full bg-gradient-to-br ${study.bgColor} flex items-center justify-center`}>
+                    <div className="text-6xl opacity-20">
+                      {study.bgImage === 'analytics-screen' && '📊'}
+                      {study.bgImage === 'tv-dashboard' && '📺'}
+                      {study.bgImage === 'whiteboard-meeting' && '🤝'}
+                    </div>
                   </div>
-                </div>
+                )}
+                {/* Overlay gradient for better text readability if needed */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-300" />
               </motion.div>
 
               {/* Content */}
