@@ -16,11 +16,28 @@ const Chevron = ({ className = "inline-block ml-1 w-3 h-3" }) => (
 );
 
 const Navbar = () => {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80; // Account for navbar height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
-    <nav className="w-full bg-[#252525] text-white border-b border-black">
+    <nav className="fixed top-0 left-0 right-0 w-full bg-[#252525] text-white border-b border-black z-50">
       <div className="relative max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         {/* Left logo */}
-        <div className="flex items-center gap-3 z-20">
+        <div 
+          className="flex items-center gap-3 z-20 cursor-pointer"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
           <div className="w-8 h-8 bg-[#2b2b2b] rounded-md flex items-center justify-center">
             {/* stylized square icon */}
             <div className="w-3.5 h-3.5 bg-white rounded-sm" />
@@ -31,17 +48,22 @@ const Navbar = () => {
         {/* Center menu - absolutely centered so it's visually centered like your screenshot */}
         <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
           <div className="flex items-center gap-8 text-sm text-[#d7d7d7]">
-            <div className="flex items-center gap-1 cursor-pointer hover:text-white">
-              <span className="select-none">Solutions</span>
-              <Chevron />
+            <div 
+              className="cursor-pointer hover:text-white select-none transition-colors"
+              onClick={() => scrollToSection("about")}
+            >
+              About
             </div>
 
-            <div className="cursor-pointer hover:text-white select-none">About</div>
+            <div 
+              className="cursor-pointer hover:text-white select-none transition-colors"
+              onClick={() => scrollToSection("case-study")}
+            >
+              Blog
+            </div>
 
-            <div className="cursor-pointer hover:text-white select-none">Blog</div>
-
-            <div className="flex items-center gap-1 cursor-pointer hover:text-white select-none">
-              <span>Support</span>
+            <div className="flex items-center gap-1 cursor-pointer hover:text-white select-none transition-colors">
+              <span onClick={() => scrollToSection("contact")}>Support</span>
               <Chevron />
             </div>
           </div>
@@ -52,6 +74,7 @@ const Navbar = () => {
           <button
             className="bg-[#f3d66f] text-black px-4 py-2 rounded-full font-medium shadow-sm hover:bg-[#e7c957] transition"
             aria-label="Get started"
+            onClick={() => scrollToSection("contact")}
           >
             Get started
           </button>
