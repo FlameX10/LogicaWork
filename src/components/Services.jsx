@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import automation1 from "../assets/automation1.jpeg";
 
 const Services = () => {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [expandedCard, setExpandedCard] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,28 +28,31 @@ const Services = () => {
 
   const cards = [
     {
-      tag: "AD PLATFORM AUTOMATION",
-      title: "Ad data, handled automatically",
-      desc: "Pull ad reports, unify metrics, and keep everything in sync.",
-      icon: "📊",
+      tag: "AD INTELLIGENCE AUTOMATION",
+      title: "Competitor insights, delivered automatically",
+      desc: "Monitor Facebook ads in real time and get clean AI summaries of every video, image, and text creative.",
+      detailedInfo: "Unlock your competitors' secrets with our Facebook Ads Spy Automation. It continuously scans Facebook for new ads, downloads them, analyzes visuals & messages with AI, and delivers ready-to-use summaries. Perfect for brands, marketers, and agencies who want to discover viral ad angles, copy ideas, and creative trends — without spending hours researching manually.",
       gradient: "from-yellow-500 to-yellow-600",
-      cardBg: "from-[#FBF9F4] to-[#F5F1E8]"
+      cardBg: "from-[#FBF9F4] to-[#F5F1E8]",
+      image: automation1 // Add your image path here
     },
     {
-      tag: "LEAD & CRM AUTOMATION",
-      title: "Leads scored. Deals closed. Fast.",
-      desc: "Auto-score, enrich, and sync leads with AI precision.",
-      icon: "🎯",
-      gradient: "from-yellow-400 to-yellow-500",
-      cardBg: "from-[#FDFCFA] to-[#F8F5F0]"
+      tag: "CONTENT AUTOMATION",
+      title: "Content creation, powered automatically",
+      desc: "Generate high-quality text, images, and ideas with AI — consistently and at scale.",
+      detailedInfo: "Create better content in less time with our Content Generation Automation. It automates ideation, drafting, rewriting, and formatting using advanced AI models. Whether you need blogs, ads, social posts, scripts, or product descriptions, the system delivers ready-to-publish content instantly. Ideal for agencies, creators, and businesses looking to save time, boost creativity, and maintain consistent brand voice across all platforms.",
+      gradient: "from-purple-500 to-purple-600",
+      cardBg: "from-[#F8F4FB] to-[#F1E8F9]",
+      image: "" // Add your image path here
     },
     {
-      tag: "AI-POWERED REPORTING",
-      title: "Reports done. Clients wowed.",
-      desc: "Automated weekly summaries delivered on-brand.",
-      icon: "✨",
-      gradient: "from-yellow-300 to-yellow-400",
-      cardBg: "from-[#FEFDF9] to-[#FAF7F2]"
+      tag: "PERSONALIZATION ENGINE",
+      title: "Tailored experiences, delivered automatically",
+      desc: "Personalize content, recommendations, and user journeys in real time using AI.",
+      detailedInfo: "Create highly relevant and individualized experiences with our Deep Personalization Automation. It analyzes user behavior, preferences, and interactions to generate tailored messages, product recommendations, and dynamic content. Ideal for e-commerce brands, SaaS platforms, and marketers who want to increase engagement, boost conversions, and build stronger customer relationships through data-driven personalization.",
+      gradient: "from-blue-500 to-blue-600",
+      cardBg: "from-[#F4F8FB] to-[#E8F1F9]",
+      image: "" // Add your image path here
     }
   ];
 
@@ -147,50 +152,45 @@ const Services = () => {
               >
                 {/* Decorative background element */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-200/20 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                {/* Icon */}
-                <motion.div
-                  className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br ${card.gradient} flex items-center justify-center text-3xl md:text-4xl shadow-lg mb-6 relative z-10`}
-                  whileHover={{ 
-                    rotate: [0, -5, 5, 0],
-                    scale: 1.1,
-                    transition: { duration: 0.5 }
-                  }}
-                >
-                  <motion.span
-                    animate={{ y: [0, -6, 0] }}
-                    transition={{ 
-                      duration: 3, 
-                      repeat: Infinity, 
-                      ease: "easeInOut",
-                      delay: i * 0.3
-                    }}
-                  >
-                    {card.icon}
-                  </motion.span>
-                </motion.div>
 
-                {/* Content */}
-                <div className="flex-1 relative z-10">
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-                    transition={{ duration: 0.5, delay: 0.5 + (i * 0.1) }}
-                    className="text-xs font-semibold text-yellow-600 tracking-widest uppercase mb-4"
-                  >
-                    {card.tag}
-                  </motion.p>
-                  
-                  <motion.h3
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                    transition={{ duration: 0.6, delay: 0.6 + (i * 0.1) }}
-                    className="text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-4 leading-tight group-hover:text-yellow-600 transition-colors duration-300"
-                  >
-                    {card.title}
-                  </motion.h3>
-                  
-                  <motion.p
+                {/* Flex container for image and content side by side */}
+                <div className="flex gap-6 mb-6">
+                  {/* Image - Left side */}
+                  {card.image && (
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                      transition={{ duration: 0.6, delay: 0.4 + (i * 0.1) }}
+                      className="w-40 h-24 md:w-32 md:h-32 rounded-2xl overflow-hidden shadow-lg flex-shrink-0"
+                    >
+                      <img 
+                        src={card.image} 
+                        alt={card.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </motion.div>
+                  )}
+
+                  {/* Tag and Title - Right side of image */}
+                  <div className="flex-1 relative z-10">
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
+                      transition={{ duration: 0.5, delay: 0.5 + (i * 0.1) }}
+                      className="text-xs font-semibold text-yellow-600 tracking-widest uppercase mb-3"
+                    >
+                      {card.tag}
+                    </motion.p>
+                    
+                    <motion.h3
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                      transition={{ duration: 0.6, delay: 0.6 + (i * 0.1) }}
+                      className="text-2xl md:text-3xl font-bold text-[#1a1a1a] leading-tight group-hover:text-yellow-600 transition-colors duration-300"
+                    >
+                      {card.title}
+                    </motion.h3>
+                    <motion.p
                     initial={{ opacity: 0 }}
                     animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
                     transition={{ duration: 0.6, delay: 0.7 + (i * 0.1) }}
@@ -198,6 +198,31 @@ const Services = () => {
                   >
                     {card.desc}
                   </motion.p>
+                  </div>
+                </div>
+
+                {/* Description - Full width below image/title */}
+                <div className="flex-1 relative z-10">
+                  
+
+                  {/* Detailed Info - Expandable */}
+                  <AnimatePresence>
+                    {expandedCard === i && card.detailedInfo && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="bg-yellow-50/50 rounded-xl p-4 mb-4 border border-yellow-200/30">
+                          <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                            {card.detailedInfo}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
                 {/* Button */}
@@ -206,24 +231,34 @@ const Services = () => {
                   animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.5, delay: 0.8 + (i * 0.1) }}
                   whileHover={{ 
-                    scale: 1.05, 
-                    x: 8,
+                    scale: 1.05,
                     transition: { duration: 0.2 }
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 bg-yellowBrand text-[#1a1a1a] px-6 py-3 rounded-xl font-semibold hover:bg-yellow-400 transition-all duration-300 self-start shadow-md relative z-10 group/btn"
+                  onClick={() => {
+                    if (card.detailedInfo) {
+                      setExpandedCard(expandedCard === i ? null : i);
+                    }
+                  }}
+                  className={`inline-flex items-center gap-2 ${
+                    card.detailedInfo 
+                      ? 'bg-yellowBrand hover:bg-yellow-400' 
+                      : 'bg-gray-200 hover:bg-gray-300 cursor-not-allowed'
+                  } text-[#1a1a1a] px-6 py-3 rounded-xl font-semibold transition-all duration-300 self-start shadow-md relative z-10`}
+                  disabled={!card.detailedInfo}
                 >
-                  <span>Learn more</span>
+                  <span>{expandedCard === i ? 'Show less' : 'Show more'}</span>
                   <motion.span
-                    animate={{ x: [0, 4, 0] }}
+                    animate={{ 
+                      rotate: expandedCard === i ? 180 : 0
+                    }}
                     transition={{ 
-                      duration: 1.5, 
-                      repeat: Infinity,
+                      duration: 0.3,
                       ease: "easeInOut"
                     }}
                     className="text-lg"
                   >
-                    →
+                    ↓
                   </motion.span>
                 </motion.button>
               </div>
