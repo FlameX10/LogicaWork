@@ -33,8 +33,8 @@ const Services = () => {
       title: "Competitor insights, delivered automatically",
       desc: "Monitor Facebook ads in real time and get clean AI summaries of every video, image, and text creative.",
       detailedInfo: "Unlock your competitors' secrets with our Facebook Ads Spy Automation. It continuously scans Facebook for new ads, downloads them, analyzes visuals & messages with AI, and delivers ready-to-use summaries. Perfect for brands, marketers, and agencies who want to discover viral ad angles, copy ideas, and creative trends — without spending hours researching manually.",
-      gradient: "from-yellow-500 to-yellow-600",
-      cardBg: "from-[#FBF9F4] to-[#F5F1E8]",
+      gradient: "from-white to-white",
+      cardBg: "from-[#ffffff] to-[#ffffff]",
       image: automation1 // Add your image path here
     },
     {
@@ -42,8 +42,8 @@ const Services = () => {
       title: "Proposals generated, delivered automatically",
       desc: "Draft, customize, and deliver professional proposals at scale using AI-assisted templates and data-driven personalization.",
       detailedInfo: "Speed up your sales cycle with Proposal Generation Automation. The system pulls client data, past interactions, and product/pricing info to auto-build tailored proposals and statements of work. It supports editable templates, on-the-fly pricing calculations, client-specific messaging, and export to PDF or shareable links — saving hours of manual drafting while increasing win rates and consistency across your team.",
-      gradient: "from-yellow-500 to-yellow-600",
-      cardBg: "from-[#FBF9F4] to-[#F5F1E8]",
+      gradient: "from-white to-white",
+      cardBg: "from-[#ffffff] to-[#ffffff]",
       image: automation2 // Add your image path or import reference here
 
     },
@@ -52,8 +52,8 @@ const Services = () => {
       title: "Tailored experiences, delivered automatically",
       desc: "Personalize content, recommendations, and user journeys in real time using AI.",
       detailedInfo: "Create highly relevant and individualized experiences with our Deep Personalization Automation. It analyzes user behavior, preferences, and interactions to generate tailored messages, product recommendations, and dynamic content. Ideal for e-commerce brands, SaaS platforms, and marketers who want to increase engagement, boost conversions, and build stronger customer relationships through data-driven personalization.",
-      gradient: "from-blue-500 to-blue-600",
-      cardBg: "from-[#F4F8FB] to-[#E8F1F9]",
+      gradient: "from-white to-white",
+      cardBg: "from-[#ffffff] to-[#ffffff]",
       image: automation3 // Add your image path here
     }
   ];
