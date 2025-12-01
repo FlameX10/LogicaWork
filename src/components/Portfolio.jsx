@@ -87,7 +87,7 @@ const Portfolio = () => {
 
   return (
     <section id="portfolio" className="w-full bg-[#F7F0DF] py-16 md:py-28 px-4 md:px-6">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-8 md:gap-16">
+      <div className="max-w-7xl mx-auto flex flex-row md:flex-row gap-8 md:gap-16">
 
         {/* LEFT SIDE */}
         <div>

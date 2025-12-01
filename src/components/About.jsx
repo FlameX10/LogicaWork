@@ -204,11 +204,11 @@ export default function About() {
     <section id="about" ref={sectionRef} className="py-16 md:py-32 px-4 md:px-6 bg-gradient-to-b from-[#ffffff] to-white">
       <div className="max-w-7xl mx-auto">
 
-        {/* ✔ Fixed layout: LEFT text, RIGHT grid */}
-        <div className="flex flex-row lg:flex-row lg:items-start gap-12 md:gap-20">
+        {/* ✔ Mobile: stacks vertical | Desktop (lg): your original side-by-side */}
+        <div className="flex flex-col flex-row items-start gap-12 lg:gap-20">
 
-          {/* LEFT SIDE (fixed width) */}
-          <div className="lg:w-[420px] flex-shrink-0 space-y-10 md:space-y-16">
+          {/* LEFT SIDE (fixed width on desktop) */}
+          <div className="lg:w-[420px] lg:flex-shrink-0 space-y-10 md:space-y-16">
 
             {/* Heading + subtitle */}
             <motion.div
