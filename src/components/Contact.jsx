@@ -6,6 +6,28 @@ import last from '../assets/last.jpg';
 export default function Contact() {
   const { ref, inView } = useScrollAnimation()
 
+  const handleBookCall = () => {
+    const footer = document.querySelector('footer') || document.getElementById('footer') || document.getElementById('contact');
+    if (footer) {
+      footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      
+      setTimeout(() => {
+        alert('Please subscribe to book a call!');
+      }, 800);
+    }
+  };
+
+  const handleSeeWork = () => {
+    const footer = document.querySelector('footer') || document.getElementById('footer') || document.getElementById('contact');
+    if (footer) {
+      footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      
+      setTimeout(() => {
+        alert('Please subscribe to see our work!');
+      }, 800);
+    }
+  };
+
   return (
     <section
       id="contact"
@@ -46,11 +68,17 @@ export default function Contact() {
           </p>
 
           <div className="flex gap-4 pt-4">
-            <button className="bg-yellow-500 text-black font-medium px-6 py-3 rounded-xl shadow-sm hover:bg-yellow-400 transition-all">
+            <button 
+              onClick={handleBookCall}
+              className="bg-yellow-500 text-black font-medium px-6 py-3 rounded-xl shadow-sm hover:bg-yellow-400 transition-all"
+            >
               Book call
             </button>
 
-            <button className="bg-white border border-gray-300 text-gray-700 font-medium px-6 py-3 rounded-xl hover:bg-gray-50 transition-all">
+            <button 
+              onClick={handleSeeWork}
+              className="bg-white border border-gray-300 text-gray-700 font-medium px-6 py-3 rounded-xl hover:bg-gray-50 transition-all"
+            >
               See work
             </button>
           </div>

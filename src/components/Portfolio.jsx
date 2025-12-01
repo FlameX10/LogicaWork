@@ -85,6 +85,19 @@ const Portfolio = () => {
     },
   ];
 
+  const handleAskNow = () => {
+    // Scroll to footer
+    const footer = document.querySelector('footer') || document.getElementById('footer') || document.getElementById('contact');
+    if (footer) {
+      footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      
+      // Show alert after scroll
+      setTimeout(() => {
+        alert('Please subscribe to ask your questions!');
+      }, 800);
+    }
+  };
+
   return (
     <section id="portfolio" className="w-full bg-[#F7F0DF] py-16 md:py-28 px-4 md:px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-8 md:gap-16">
@@ -100,7 +113,10 @@ const Portfolio = () => {
             questions—so you can scale smarter, not harder.
           </p>
 
-          <button className="bg-[#FFDF68] hover:bg-[#f9d859] transition-colors text-black text-base md:text-lg px-8 md:px-10 py-3 md:py-4 rounded-xl">
+          <button 
+            onClick={handleAskNow}
+            className="bg-[#FFDF68] hover:bg-[#f9d859] transition-colors text-black text-base md:text-lg px-8 md:px-10 py-3 md:py-4 rounded-xl"
+          >
             Ask now
           </button>
         </div>
