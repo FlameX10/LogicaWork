@@ -205,7 +205,7 @@ export default function About() {
       <div className="max-w-7xl mx-auto">
 
         {/* ✔ Mobile: stacks vertical | Desktop (lg): your original side-by-side */}
-        <div className="flex flex-col flex-row items-start gap-12 lg:gap-20">
+        <div className="flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-20">
 
           {/* LEFT SIDE (fixed width on desktop) */}
           <div className="lg:w-[420px] lg:flex-shrink-0 space-y-10 md:space-y-16">
