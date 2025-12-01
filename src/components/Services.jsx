@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import automation1 from "../assets/automation1.jpeg";
-
+import automation2 from "../assets/automation2.jpeg";
+import automation3 from "../assets/automation3.jpeg";
 const Services = () => {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -37,13 +38,14 @@ const Services = () => {
       image: automation1 // Add your image path here
     },
     {
-      tag: "CONTENT AUTOMATION",
-      title: "Content creation, powered automatically",
-      desc: "Generate high-quality text, images, and ideas with AI — consistently and at scale.",
-      detailedInfo: "Create better content in less time with our Content Generation Automation. It automates ideation, drafting, rewriting, and formatting using advanced AI models. Whether you need blogs, ads, social posts, scripts, or product descriptions, the system delivers ready-to-publish content instantly. Ideal for agencies, creators, and businesses looking to save time, boost creativity, and maintain consistent brand voice across all platforms.",
-      gradient: "from-purple-500 to-purple-600",
-      cardBg: "from-[#F8F4FB] to-[#F1E8F9]",
-      image: "" // Add your image path here
+      tag: "PROPOSAL AUTOMATION",
+      title: "Proposals generated, delivered automatically",
+      desc: "Draft, customize, and deliver professional proposals at scale using AI-assisted templates and data-driven personalization.",
+      detailedInfo: "Speed up your sales cycle with Proposal Generation Automation. The system pulls client data, past interactions, and product/pricing info to auto-build tailored proposals and statements of work. It supports editable templates, on-the-fly pricing calculations, client-specific messaging, and export to PDF or shareable links — saving hours of manual drafting while increasing win rates and consistency across your team.",
+      gradient: "from-yellow-500 to-yellow-600",
+      cardBg: "from-[#FBF9F4] to-[#F5F1E8]",
+      image: automation2 // Add your image path or import reference here
+
     },
     {
       tag: "PERSONALIZATION ENGINE",
@@ -52,7 +54,7 @@ const Services = () => {
       detailedInfo: "Create highly relevant and individualized experiences with our Deep Personalization Automation. It analyzes user behavior, preferences, and interactions to generate tailored messages, product recommendations, and dynamic content. Ideal for e-commerce brands, SaaS platforms, and marketers who want to increase engagement, boost conversions, and build stronger customer relationships through data-driven personalization.",
       gradient: "from-blue-500 to-blue-600",
       cardBg: "from-[#F4F8FB] to-[#E8F1F9]",
-      image: "" // Add your image path here
+      image: automation3 // Add your image path here
     }
   ];
 
@@ -88,7 +90,7 @@ const Services = () => {
     <section
       id="services"
       ref={sectionRef}
-      className="relative py-24 md:py-32 px-4 md:px-8 bg-[#F7F0DF] overflow-hidden"
+      className="relative py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 bg-[#F7F0DF] overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
@@ -96,13 +98,13 @@ const Services = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-16 md:mb-20"
+          className="text-center mb-12 sm:mb-14 md:mb-16 lg:mb-20"
         >
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-xs md:text-sm font-semibold text-gray-500 tracking-widest mb-4 uppercase"
+            className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-500 tracking-widest mb-3 sm:mb-4 uppercase"
           >
             What We Automate
           </motion.p>
@@ -111,7 +113,7 @@ const Services = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#1a1a1a] mb-6 leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#1a1a1a] mb-4 sm:mb-5 md:mb-6 leading-tight px-4"
           >
             Workflows that{" "}
             <span className="text-yellowBrand inline-block">
@@ -124,7 +126,7 @@ const Services = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
+            className="text-gray-600 text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed px-4"
           >
             Streamline your operations with intelligent automation solutions designed to save time and boost efficiency.
           </motion.p>
@@ -135,7 +137,7 @@ const Services = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-7 lg:gap-8"
         >
           {cards.map((card, i) => (
             <motion.div
@@ -148,20 +150,20 @@ const Services = () => {
               className="group"
             >
               <div
-                className={`bg-gradient-to-br ${card.cardBg} border border-yellow-200/40 rounded-3xl p-8 md:p-10 h-full flex flex-col shadow-lg hover:shadow-2xl hover:border-yellow-300/60 transition-all duration-500 relative overflow-hidden`}
+                className={`bg-gradient-to-br ${card.cardBg} border border-yellow-200/40 rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 h-full flex flex-col shadow-lg hover:shadow-2xl hover:border-yellow-300/60 transition-all duration-500 relative overflow-hidden`}
               >
                 {/* Decorative background element */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-200/20 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-yellow-200/20 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                {/* Flex container for image and content side by side */}
-                <div className="flex gap-6 mb-6">
-                  {/* Image - Left side */}
+                {/* Flex container for image and content */}
+                <div className="flex flex-col sm:flex-row gap-4 md:gap-5 lg:gap-6 mb-4 sm:mb-5 md:mb-6">
+                  {/* Image - Full width on mobile, fixed on desktop */}
                   {card.image && (
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                       transition={{ duration: 0.6, delay: 0.4 + (i * 0.1) }}
-                      className="w-40 h-24 md:w-32 md:h-32 rounded-2xl overflow-hidden shadow-lg flex-shrink-0"
+                      className="w-full sm:w-24 md:w-28 lg:w-32 h-32 sm:h-24 md:h-28 lg:h-80 rounded-xl sm:rounded-2xl overflow-hidden shadow-md sm:shadow-lg flex-shrink-0 mx-auto sm:mx-0"
                     >
                       <img 
                         src={card.image} 
@@ -171,13 +173,13 @@ const Services = () => {
                     </motion.div>
                   )}
 
-                  {/* Tag and Title - Right side of image */}
-                  <div className="flex-1 relative z-10">
+                  {/* Tag and Title */}
+                  <div className="flex-1 relative z-10 text-center sm:text-left">
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
                       transition={{ duration: 0.5, delay: 0.5 + (i * 0.1) }}
-                      className="text-xs font-semibold text-yellow-600 tracking-widest uppercase mb-3"
+                      className="text-[10px] sm:text-xs font-semibold text-yellow-600 tracking-widest uppercase mb-2 sm:mb-3"
                     >
                       {card.tag}
                     </motion.p>
@@ -186,24 +188,23 @@ const Services = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                       transition={{ duration: 0.6, delay: 0.6 + (i * 0.1) }}
-                      className="text-2xl md:text-3xl font-bold text-[#1a1a1a] leading-tight group-hover:text-yellow-600 transition-colors duration-300"
+                      className="text-xl sm:text-2xl md:text-3xl font-bold text-[#1a1a1a] leading-tight group-hover:text-yellow-600 transition-colors duration-300"
                     >
                       {card.title}
                     </motion.h3>
-                    <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-                    transition={{ duration: 0.6, delay: 0.7 + (i * 0.1) }}
-                    className="text-gray-700 text-base md:text-lg leading-relaxed mb-6"
-                  >
-                    {card.desc}
-                  </motion.p>
                   </div>
                 </div>
 
-                {/* Description - Full width below image/title */}
+                {/* Description */}
                 <div className="flex-1 relative z-10">
-                  
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ duration: 0.6, delay: 0.7 + (i * 0.1) }}
+                    className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed mb-5 sm:mb-6 text-center sm:text-left"
+                  >
+                    {card.desc}
+                  </motion.p>
 
                   {/* Detailed Info - Expandable */}
                   <AnimatePresence>
@@ -215,8 +216,8 @@ const Services = () => {
                         transition={{ duration: 0.4, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="bg-yellow-50/50 rounded-xl p-4 mb-4 border border-yellow-200/30">
-                          <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                        <div className="bg-yellow-50/50 rounded-xl p-3 sm:p-4 mb-4 sm:mb-5 border border-yellow-200/30">
+                          <p className="text-gray-700 text-xs sm:text-sm md:text-base leading-relaxed text-left">
                             {card.detailedInfo}
                           </p>
                         </div>
@@ -240,11 +241,11 @@ const Services = () => {
                       setExpandedCard(expandedCard === i ? null : i);
                     }
                   }}
-                  className={`inline-flex items-center gap-2 ${
+                  className={`inline-flex items-center justify-center gap-2 ${
                     card.detailedInfo 
                       ? 'bg-yellowBrand hover:bg-yellow-400' 
                       : 'bg-gray-200 hover:bg-gray-300 cursor-not-allowed'
-                  } text-[#1a1a1a] px-6 py-3 rounded-xl font-semibold transition-all duration-300 self-start shadow-md relative z-10`}
+                  } text-[#1a1a1a] px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-semibold transition-all duration-300 shadow-md relative z-10 text-xs sm:text-sm md:text-base w-full sm:w-auto sm:self-start`}
                   disabled={!card.detailedInfo}
                 >
                   <span>{expandedCard === i ? 'Show less' : 'Show more'}</span>
@@ -256,7 +257,7 @@ const Services = () => {
                       duration: 0.3,
                       ease: "easeInOut"
                     }}
-                    className="text-lg"
+                    className="text-base sm:text-lg"
                   >
                     ↓
                   </motion.span>
@@ -271,12 +272,12 @@ const Services = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.8, delay: 1.2 }}
-          className="mt-16 md:mt-20 text-center"
+          className="mt-12 sm:mt-14 md:mt-16 lg:mt-20 text-center"
         >
-          <div className="inline-flex items-center gap-3 text-gray-400">
-            <div className="h-px w-12 bg-gradient-to-r from-transparent to-yellow-300" />
-            <span className="text-sm font-medium">Automation that scales with you</span>
-            <div className="h-px w-12 bg-gradient-to-l from-transparent to-yellow-300" />
+          <div className="inline-flex items-center gap-2 sm:gap-3 text-gray-400 px-4">
+            <div className="h-px w-8 sm:w-12 bg-gradient-to-r from-transparent to-yellow-300" />
+            <span className="text-xs sm:text-sm font-medium whitespace-nowrap">Automation that scales with you</span>
+            <div className="h-px w-8 sm:w-12 bg-gradient-to-l from-transparent to-yellow-300" />
           </div>
         </motion.div>
       </div>
