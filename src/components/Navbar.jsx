@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, AlertTriangle } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import LogoImage from '../assets/logo.png';
 
 const navLinks = [
   { label: 'Problem', href: '#problem' },
@@ -37,11 +38,9 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <a href="#" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center">
-                <AlertTriangle className="w-4 h-4 text-amber-500" />
-              </div>
-              <span className="text-white font-semibold text-lg tracking-tight">
-                LogicaWork<span className="text-amber-500">.</span>
+              <img src={LogoImage} alt="LogicaWork" className="h-10 w-10 md:h-12 md:w-12" />
+              <span className="text-white font-semibold text-lg tracking-tight hidden sm:inline">
+                LogicaWork
               </span>
             </a>
 
