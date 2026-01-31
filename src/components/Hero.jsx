@@ -80,18 +80,7 @@ const Hero = () => {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-amber-500/5 rounded-full blur-[120px]" />
       
       <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-8 text-center">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8"
-        >
-          <AlertTriangle className="w-4 h-4 text-amber-500" />
-          <span className="text-sm text-white/70">LogicaWork</span>
-        </motion.div>
-
-        {/* Main headline */}
+        
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
