@@ -1,28 +1,39 @@
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import SocialProof from './components/SocialProof'
-import Services from './components/Services'
-import CaseStudy from './components/CaseStudy'
-import Portfolio from './components/Portfolio'
-import Process from './components/Process'
-import About from './components/About'
-import Contact from './components/Contact'
+import InvisibleLeakage from './components/InvisibleLeakage'
+import DangerZone from './components/DangerZone'
+import TooLate from './components/TooLate'
+import CostOfInaction from './components/CostOfInaction'
+import IndianMarketRisk from './components/IndianMarketRisk'
+import WhyToolsFailed from './components/WhyToolsFailed'
+import ControlDefinition from './components/ControlDefinition'
+import AIControlLayer from './components/AIControlLayer'
+import RevenueLeakageAudit from './components/RevenueLeakageAudit'
+import AuditDeliverables from './components/AuditDeliverables'
+import PathToScale from './components/PathToScale'
+import WhoThisIsFor from './components/WhoThisIsFor'
+import WhySayingYesIsSafe from './components/WhySayingYesIsSafe'
 import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="w-full overflow-x-hidden bg-black">
+    <div className="w-full overflow-x-hidden bg-[#0a0a0a]">
       <Navbar />
       <Hero />
-      <SocialProof />
-      <Services />
-      <CaseStudy />
-      
-      {/* <Process /> */}
-      <About />
-      <Portfolio />
-      <Contact />
+      <InvisibleLeakage />
+      <DangerZone />
+      <TooLate />
+      <CostOfInaction />
+      <IndianMarketRisk />
+      <WhyToolsFailed />
+      <ControlDefinition />
+      <AIControlLayer />
+      <RevenueLeakageAudit />
+      <AuditDeliverables />
+      <PathToScale />
+      <WhoThisIsFor />
+      <WhySayingYesIsSafe />
       <Footer />
     </div>
   )
