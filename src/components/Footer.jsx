@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowRight, AlertTriangle, Mail, Linkedin, Calendar } from 'lucide-react';
+import { ArrowRight, Mail, Linkedin, Calendar } from 'lucide-react';
+import LogoImage from '../assets/logo.png';
 
 const Footer = () => {
   const ref = useRef(null);
@@ -22,7 +23,7 @@ const Footer = () => {
           >
             {/* Icon */}
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-500/10 border border-red-500/20 mb-8">
-              <AlertTriangle className="w-7 h-7 text-red-500" />
+              <img src={LogoImage} alt="LogicaWork" className="w-12 h-12" />
             </div>
 
             {/* Headline */}
@@ -63,11 +64,9 @@ const Footer = () => {
             {/* Brand */}
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center">
-                  <AlertTriangle className="w-4 h-4 text-amber-500" />
-                </div>
+                <img src={LogoImage} alt="LogicaWork" className="h-10 w-10" />
                 <span className="text-white font-semibold text-lg tracking-tight">
-                LogicaWork<span className="text-amber-500">.</span>
+                LogicaWork
                 </span>
               </div>
               <p className="text-sm text-white/40 leading-relaxed">
