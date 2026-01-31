@@ -67,11 +67,11 @@ const Footer = () => {
                   <AlertTriangle className="w-4 h-4 text-amber-500" />
                 </div>
                 <span className="text-white font-semibold text-lg tracking-tight">
-                  RevOps<span className="text-amber-500">.</span>
+                LogicaWork<span className="text-amber-500">.</span>
                 </span>
               </div>
               <p className="text-sm text-white/40 leading-relaxed">
-                Revenue Operations Consultancy helping growing agencies stop invisible revenue leakage through control systems and AI-powered detection.
+                LogicaWork helps growing agencies stop invisible revenue leakage through control systems and AI-powered detection.
               </p>
             </div>
 
@@ -99,11 +99,11 @@ const Footer = () => {
               <h4 className="text-white font-medium mb-4">Get in Touch</h4>
               <div className="space-y-3">
                 <a 
-                  href="mailto:hello@revops.in" 
+                  href="mailto:hello@logicawork.com" 
                   className="flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors"
                 >
                   <Mail className="w-4 h-4" />
-                  hello@revops.in
+                  hello@logicawork.com
                 </a>
                 <a 
                   href="https://linkedin.com" 
@@ -119,7 +119,7 @@ const Footer = () => {
               {/* Founder */}
               <div className="mt-6 pt-4 border-t border-white/5">
                 <p className="text-xs text-white/30">Founded by</p>
-                <p className="text-sm text-white/60">Your Name</p>
+                <p className="text-sm text-white/60">LogicaWork Team</p>
               </div>
             </div>
           </div>
@@ -127,10 +127,10 @@ const Footer = () => {
           {/* Bottom bar */}
           <div className="mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-xs text-white/30">
-              © 2026 RevOps Consultancy. All rights reserved.
+              © 2026 LogicaWork. All rights reserved.
             </p>
             <p className="text-xs text-white/30">
-              Built for agencies that refuse to bleed silently.
+              Powered by LogicaWork | Built for agencies that refuse to bleed silently.
             </p>
           </div>
         </div>
