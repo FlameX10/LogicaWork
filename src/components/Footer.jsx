@@ -99,14 +99,14 @@ const Footer = () => {
               <h4 className="text-white font-medium mb-4">Get in Touch</h4>
               <div className="space-y-3">
                 <a 
-                  href="mailto:hello@logicawork.com" 
+                  href="mailto:ramankerzarkar@logicawork.com" 
                   className="flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors"
                 >
                   <Mail className="w-4 h-4" />
-                  hello@logicawork.com
+                  ramankerzarkar@logicawork.com
                 </a>
                 <a 
-                  href="https://linkedin.com" 
+                  href="https://www.linkedin.com/in/raman-kerzarkar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors"
