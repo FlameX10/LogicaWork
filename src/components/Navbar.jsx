@@ -41,7 +41,7 @@ const Navbar = () => {
                 <AlertTriangle className="w-4 h-4 text-amber-500" />
               </div>
               <span className="text-white font-semibold text-lg tracking-tight">
-                RevOps<span className="text-amber-500">.</span>
+                LogicaWork<span className="text-amber-500">.</span>
               </span>
             </a>
 
