@@ -39,7 +39,7 @@ const Footer = () => {
 
             {/* CTA Button */}
             <motion.a
-              href="mailto:hello@revops.in"
+              href="mailto:ramankerzarkar@logicawork.com"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-3 btn-primary text-lg px-10 py-5"
