@@ -1,0 +1,32 @@
+# Robots.txt for LogicaWork
+# Generated for SEO optimization
+
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /services
+Allow: /contact
+Allow: /blog/
+Allow: /blog/ai-automation
+Allow: /blog/custom-software
+Allow: /blog/startup-tech
+
+# Block admin and sensitive areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /temp/
+Disallow: /tmp/
+
+# Crawl delay for all bots
+Crawl-delay: 1
+
+# Specific rules for Google Bot (can crawl faster)
+User-agent: Googlebot
+Crawl-delay: 0
+Allow: /
+
+# Sitemap location
+Sitemap: https://logicawork.com/sitemap.xml
