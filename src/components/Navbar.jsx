@@ -6,7 +6,7 @@ import LogoImage from '../assets/logo.png';
 const navLinks = [
   { label: 'Problem', href: '#problem' },
   { label: 'Solution', href: '#audit' },
-  { label: 'Process', href: '#audit' },
+  { label: 'Case Studies', href: '#case-studies' },
   { label: 'Contact', href: '#contact' },
 ];
 
