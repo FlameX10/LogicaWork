@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, BarChart3, Clock, TrendingUp } from "lucide-react";
+import { ArrowRight, BarChart3, Clock, FileText, ShieldAlert, TrendingUp } from "lucide-react";
 
 const CaseStudyPreview = ({ onViewCaseStudies }) => {
   const sectionRef = useRef(null);
@@ -54,6 +54,36 @@ const CaseStudyPreview = ({ onViewCaseStudies }) => {
       color: "from-green-500/20 to-green-600/20",
       borderColor: "border-green-500/30",
       tagColor: "bg-green-500/10 border-green-500/20 text-green-300"
+    },
+    {
+      id: 4,
+      title: "Agency Automates Meeting Documentation and Task Capture",
+      location: "Delhi",
+      metric: "80% less manual notes",
+      icon: <FileText className="w-6 h-6" />,
+      color: "from-cyan-500/20 to-cyan-600/20",
+      borderColor: "border-cyan-500/30",
+      tagColor: "bg-cyan-500/10 border-cyan-500/20 text-cyan-300"
+    },
+    {
+      id: 5,
+      title: "Performance Agency Detects Campaign Issues in Real Time",
+      location: "Mumbai",
+      metric: "Alerts every 4 hours",
+      icon: <ShieldAlert className="w-6 h-6" />,
+      color: "from-rose-500/20 to-rose-600/20",
+      borderColor: "border-rose-500/30",
+      tagColor: "bg-rose-500/10 border-rose-500/20 text-rose-300"
+    },
+    {
+      id: 6,
+      title: "Agency Tracks Client Profitability with Utilization Analytics",
+      location: "Gurgaon",
+      metric: "Weekly margin visibility",
+      icon: <BarChart3 className="w-6 h-6" />,
+      color: "from-violet-500/20 to-violet-600/20",
+      borderColor: "border-violet-500/30",
+      tagColor: "bg-violet-500/10 border-violet-500/20 text-violet-300"
     }
   ];
 
@@ -129,14 +159,14 @@ const CaseStudyPreview = ({ onViewCaseStudies }) => {
               variants={cardVariants}
               whileHover="hover"
               onClick={() => {
-                window.location.hash = 'case-studies'
+                onViewCaseStudies && onViewCaseStudies(study.id)
               }}
               className="group cursor-pointer"
             >
               <div className={`
                 relative h-full p-8 rounded-xl border transition-all duration-300
-                bg-gradient-to-br ${study.color} ${study.borderColor}
-                hover:border-white/20 hover:bg-white/[0.08]
+                bg-linear-to-br ${study.color} ${study.borderColor}
+                hover:border-white/20 hover:bg-white/8
               `}>
                 {/* Glow effect on hover */}
                 <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg`}
@@ -188,53 +218,16 @@ const CaseStudyPreview = ({ onViewCaseStudies }) => {
           ))}
         </motion.div>
 
-        {/* CTA Section */}
-        <motion.div
+        <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="text-center"
+          className="text-white/40 text-sm md:text-base text-center mb-4"
         >
-          <p className="text-white/50 mb-8 max-w-2xl mx-auto">
-            Explore all 6 case studies and see the exact systems used to prevent revenue leakage at scale.
-          </p>
+          Click any card to open that individual case study.
+        </motion.p>
 
-          <button
-            onClick={() => {
-              window.location.hash = 'case-studies'
-            }}
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-amber-500/30 cursor-pointer hover:scale-105 active:scale-95 transform"
-          >
-            <span>View All Case Studies</span>
-            <ArrowRight className="w-5 h-5" />
-          </button>
 
-          {/* Subtext */}
-          <p className="text-white/30 text-sm mt-6">
-            6 detailed case studies • 100+ hours of implementation documented
-          </p>
-        </motion.div>
-
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.7 }}
-          className="grid grid-cols-3 gap-6 mt-20 pt-12 border-t border-white/5"
-        >
-          {[
-            { label: "Agencies Studied", value: "6+" },
-            { label: "Hours Saved Monthly", value: "100+" },
-            { label: "Revenue Recovered", value: "₹15L+" }
-          ].map((stat, idx) => (
-            <div key={idx} className="text-center">
-              <div className="text-2xl md:text-3xl font-bold gradient-gold mb-2">
-                {stat.value}
-              </div>
-              <p className="text-white/50 text-sm">{stat.label}</p>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
