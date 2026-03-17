@@ -1,11 +1,9 @@
 import { motion } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { useInView } from 'framer-motion';
-import { ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ArrowLeft, ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const CaseStudyPage = ({ onBack }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+const CaseStudyPage = ({ onBack, initialCaseStudyId = null }) => {
+  const [selectedCaseStudyId, setSelectedCaseStudyId] = useState(initialCaseStudyId);
 
   const caseStudies = [
     {
@@ -699,69 +697,142 @@ This helped leadership maintain healthier client margins.`
     }
   ];
 
+  useEffect(() => {
+    const validStudy = caseStudies.find((study) => study.id === initialCaseStudyId);
+    setSelectedCaseStudyId(validStudy ? initialCaseStudyId : null);
+  }, [initialCaseStudyId]);
+
+  const selectedStudy = caseStudies.find((study) => study.id === selectedCaseStudyId) || null;
+  const selectedIndex = selectedStudy
+    ? caseStudies.findIndex((study) => study.id === selectedStudy.id)
+    : -1;
+
+  const openCaseStudy = (studyId) => {
+    setSelectedCaseStudyId(studyId);
+    window.location.hash = `case-studies/${studyId}`;
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 0);
+  };
+
+  const showAllCaseStudies = () => {
+    setSelectedCaseStudyId(null);
+    window.location.hash = 'case-studies';
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 0);
+  };
+
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
-      {/* Header with back button */}
-      <div className="sticky top-0 z-40 bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-white/5">
-        <div className="max-w-6xl mx-auto px-4 md:px-8 py-6 flex items-center justify-between">
-          <h1 className="text-2xl md:text-3xl font-semibold text-white">Case Studies</h1>
-          <button
-            onClick={() => {
-              window.location.hash = ''
-              onBack && onBack()
-            }}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white/60 hover:text-white transition-all duration-200 cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="hidden sm:inline text-sm">Back</span>
-          </button>
-        </div>
-      </div>
+      <br/>
+      <br/>
 
-      {/* Case Studies */}
-      <div className="max-w-6xl mx-auto px-4 md:px-8 py-16">
-        {caseStudies.map((study, index) => (
+      {/* <div className="sticky top-0 z-40 bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-white/5"> */}
+        {/* <div className="max-w-6xl mx-auto px-4 md:px-8 py-6 flex items-center justify-between">
+          <h1 className="text-2xl md:text-3xl font-semibold text-white">Case Studies</h1>
+          <div className="flex items-center gap-3">
+            {selectedStudy && (
+              <button
+                onClick={showAllCaseStudies}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white/70 hover:text-white transition-all duration-200 cursor-pointer"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span className="hidden sm:inline text-sm">All Studies</span>
+              </button>
+            )}
+            <button
+              onClick={() => {
+                window.location.hash = '';
+                onBack && onBack();
+              }}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white/60 hover:text-white transition-all duration-200 cursor-pointer"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span className="hidden sm:inline text-sm">Back</span>
+            </button>
+          </div> */}
+        {/* </div> */}
+      {/* </div> */}
+
+      {!selectedStudy ? (
+        <div className="max-w-6xl mx-auto px-4 md:px-8 py-16">
           <motion.div
-            key={study.id}
-            ref={index === 0 ? ref : null}
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: index * 0.1 }}
-            className="mb-20 scroll-mt-20 focus:outline-none"
-            id={`case-study-${study.id}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
           >
-            {/* Study Header */}
+            <p className="text-white/60 text-lg">Choose a case study card to open its full page.</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {caseStudies.map((study, index) => (
+              <motion.button
+                key={study.id}
+                type="button"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                onClick={() => openCaseStudy(study.id)}
+                className="text-left p-6 rounded-xl border border-white/10 bg-white/3 hover:bg-white/6 hover:border-amber-500/40 transition-all duration-300 group"
+              >
+                <div className="flex items-start justify-between gap-4 mb-4">
+                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 font-semibold">
+                    0{study.id}
+                  </span>
+                  <ArrowRight className="w-5 h-5 text-white/40 group-hover:text-amber-300 group-hover:translate-x-1 transition-all duration-300" />
+                </div>
+                <h2 className="text-xl md:text-2xl font-semibold text-white group-hover:text-amber-300 transition-colors mb-3">
+                  {study.title}
+                </h2>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-xs text-amber-300">
+                    📍 {study.location}
+                  </span>
+                  <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs text-blue-300">
+                    {study.industry}
+                  </span>
+                </div>
+              </motion.button>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="max-w-6xl mx-auto px-4 md:px-8 py-16">
+          <motion.div
+            key={selectedStudy.id}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45 }}
+            className="scroll-mt-20"
+          >
             <div className="mb-12 pb-8 border-b border-white/10">
               <div className="flex items-start gap-4 mb-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-amber-500/20 to-amber-600/20 border border-amber-500/30 flex items-center justify-center">
-                  <span className="text-amber-400 font-semibold text-lg">0{study.id}</span>
+                <div className="shrink-0 w-12 h-12 rounded-full bg-linear-to-br from-amber-500/20 to-amber-600/20 border border-amber-500/30 flex items-center justify-center">
+                  <span className="text-amber-400 font-semibold text-lg">0{selectedStudy.id}</span>
                 </div>
                 <div className="flex-1">
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-3 leading-tight">
-                    {study.title}
+                    {selectedStudy.title}
                   </h2>
                   <div className="flex flex-wrap gap-3 mt-4">
                     <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-sm text-amber-300">
-                      📍 {study.location}
+                      📍 {selectedStudy.location}
                     </span>
                     <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-sm text-blue-300">
-                      {study.industry}
+                      {selectedStudy.industry}
                     </span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Study Sections */}
             <div className="space-y-8">
-              {study.sections.map((section, sIdx) => (
+              {selectedStudy.sections.map((section, sIdx) => (
                 <motion.div
                   key={sIdx}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: sIdx * 0.05 }}
+                  transition={{ delay: sIdx * 0.04 }}
                   viewport={{ once: true }}
-                  className="bg-white/[0.02] border border-white/5 rounded-xl p-6 md:p-8 hover:bg-white/[0.04] hover:border-white/10 transition-all duration-300"
+                  className="bg-white/2 border border-white/5 rounded-xl p-6 md:p-8 hover:bg-white/4 hover:border-white/10 transition-all duration-300"
                 >
                   <h3 className="text-xl md:text-2xl font-semibold text-amber-400 mb-4 flex items-center gap-2">
                     <CheckCircle2 className="w-6 h-6 text-amber-500" />
@@ -796,18 +867,42 @@ This helped leadership maintain healthier client margins.`
               ))}
             </div>
 
-            {/* Divider between case studies */}
-            {index < caseStudies.length - 1 && (
-              <div className="my-16 py-8 border-t-2 border-dashed border-white/10" />
-            )}
-          </motion.div>
-        ))}
-      </div>
+            <div className="mt-12 flex flex-col sm:flex-row gap-3 justify-between">
+              <button
+                type="button"
+                disabled={selectedIndex <= 0}
+                onClick={() => openCaseStudy(caseStudies[selectedIndex - 1].id)}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg border border-white/10 bg-white/3 text-white disabled:opacity-40 disabled:cursor-not-allowed hover:bg-white/8 transition-all duration-200"
+              >
+                <ChevronLeft className="w-4 h-4" />
+                Previous Case Study
+              </button>
 
-      {/* Footer CTA */}
-      <div className="relative bg-gradient-to-b from-[#0a0a0a] to-[#0a0a0a] mt-20 py-16">
+              <button
+                type="button"
+                onClick={showAllCaseStudies}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg border border-amber-500/20 bg-amber-500/10 text-amber-300 hover:bg-amber-500/20 transition-all duration-200"
+              >
+                All Case Studies
+              </button>
+
+              <button
+                type="button"
+                disabled={selectedIndex >= caseStudies.length - 1}
+                onClick={() => openCaseStudy(caseStudies[selectedIndex + 1].id)}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg border border-white/10 bg-white/3 text-white disabled:opacity-40 disabled:cursor-not-allowed hover:bg-white/8 transition-all duration-200"
+              >
+                Next Case Study
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      <div className="relative bg-linear-to-b from-[#0a0a0a] to-[#0a0a0a] mt-20 py-16">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-amber-500/5 rounded-full blur-[200px]" />
-        
+
         <div className="max-w-4xl mx-auto px-4 md:px-8 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -823,10 +918,10 @@ This helped leadership maintain healthier client margins.`
             </p>
             <a
               href="mailto:ramankerzarkar@logicawork.com"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105"
             >
               Schedule Your Audit
-              <ArrowLeft className="w-5 h-5 transform rotate-180" />
+              <ArrowRight className="w-5 h-5" />
             </a>
           </motion.div>
         </div>
