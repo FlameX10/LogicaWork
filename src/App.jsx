@@ -20,12 +20,22 @@ import CaseStudyPage from './components/CaseStudyPage'
 import Footer from './components/Footer'
 
 function App() {
-  const [showCaseStudies, setShowCaseStudies] = useState(window.location.hash === '#case-studies')
+  const initialHash = window.location.hash || ''
+  const [showCaseStudies, setShowCaseStudies] = useState(initialHash.startsWith('#case-studies'))
+  const [activeCaseStudyId, setActiveCaseStudyId] = useState(() => {
+    const match = initialHash.match(/^#case-studies\/(\d+)$/)
+    return match ? Number(match[1]) : null
+  })
 
   useEffect(() => {
     const handleHashChange = () => {
-      const isCaseStudies = window.location.hash === '#case-studies'
+      const hash = window.location.hash || ''
+      const isCaseStudies = hash.startsWith('#case-studies')
+      const match = hash.match(/^#case-studies\/(\d+)$/)
+
       setShowCaseStudies(isCaseStudies)
+      setActiveCaseStudyId(match ? Number(match[1]) : null)
+
       if (isCaseStudies) {
         setTimeout(() => window.scrollTo(0, 0), 0)
       }
@@ -46,7 +56,7 @@ function App() {
         <CaseStudyPage onBack={() => {
           window.location.hash = ''
           setShowCaseStudies(false)
-        }} />
+        }} initialCaseStudyId={activeCaseStudyId} />
         <Footer />
       </div>
     )
@@ -69,8 +79,8 @@ function App() {
       <PathToScale />
       <WhoThisIsFor />
       <WhySayingYesIsSafe />
-      <CaseStudyPreview onViewCaseStudies={() => {
-        window.location.hash = 'case-studies'
+      <CaseStudyPreview onViewCaseStudies={(studyId) => {
+        window.location.hash = studyId ? `case-studies/${studyId}` : 'case-studies'
       }} />
       <Footer />
     </div>
