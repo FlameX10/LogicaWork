@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { AlertTriangle, ArrowRight } from 'lucide-react';
+import { AlertTriangle, ArrowDown } from 'lucide-react';
 
 const stages = [
   {
@@ -66,6 +66,22 @@ const getRiskTextColor = (risk) => {
   }
 };
 
+const getRiskBadge = (risk) => {
+  switch (risk) {
+    case 'critical': return 'bg-red-500/15 border-red-500/30 text-red-300';
+    case 'high': return 'bg-orange-500/15 border-orange-500/30 text-orange-300';
+    default: return 'bg-white/5 border-white/10 text-white/60';
+  }
+};
+
+const getRiskPill = (risk) => {
+  switch (risk) {
+    case 'critical': return 'bg-red-500 text-white shadow-[0_0_30px_rgba(239,68,68,0.28)]';
+    case 'high': return 'bg-orange-500 text-white shadow-[0_0_30px_rgba(249,115,22,0.28)]';
+    default: return 'bg-white/10 text-white/80';
+  }
+};
+
 const DangerZone = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -76,7 +92,7 @@ const DangerZone = () => {
       <div className="absolute inset-0 bg-grid opacity-30" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-red-500/5 rounded-full blur-[150px]" />
       
-      <div className="max-w-6xl mx-auto relative z-10" ref={ref}>
+      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10" ref={ref}>
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -97,66 +113,98 @@ const DangerZone = () => {
           </p>
         </motion.div>
 
-        {/* Pipeline visualization */}
-        <div className="relative">
-          {/* Connecting line */}
-          <div className="absolute top-8 left-0 right-0 h-0.5 bg-linear-to-r from-white/10 via-red-500/30 to-white/10 hidden lg:block" />
-          
-          {/* Stages */}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-2">
-            {stages.map((stage, index) => (
-              <motion.div
-                key={stage.name}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative"
-              >
-                {/* Stage card */}
-                <div className={`
-                  p-4 rounded-xl border transition-all duration-300
-                  ${getRiskColor(stage.risk)}
-                `}>
-                  {/* Stage header */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2">
-                      <div className={`
-                        w-8 h-8 rounded-lg flex items-center justify-center text-sm font-semibold
-                        ${stage.risk === 'critical' ? 'bg-red-500 text-white' : 
-                          stage.risk === 'high' ? 'bg-orange-500 text-white' : 
-                          'bg-white/10 text-white/80'}
-                      `}>
-                        {index + 1}
-                      </div>
-                      <span className="font-medium text-white">{stage.name}</span>
+        <div className="grid lg:grid-cols-[minmax(280px,360px)_1fr] gap-10 lg:gap-14 items-start">
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="relative overflow-hidden rounded-3xl border border-red-500/15 bg-linear-to-b from-red-500/8 via-transparent to-white/2 p-6 md:p-8"
+          >
+            <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-red-500/40 to-transparent" />
+            <p className="text-xs uppercase tracking-[0.28em] text-red-300/80 mb-4">Operational Exposure</p>
+            <h3 className="text-2xl md:text-3xl font-semibold text-white leading-tight mb-4">
+              Five handoffs. Multiple silent points of failure.
+            </h3>
+            <p className="text-white/60 leading-relaxed mb-8">
+              Most agencies do not lose margin in one dramatic moment. It leaks across small handoffs where ownership, context, and follow-through break down.
+            </p>
+
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="rounded-2xl border border-white/8 bg-white/4 p-4">
+                <div className="text-3xl font-semibold text-white mb-1">5</div>
+                <p className="text-sm text-white/50">core handoff nodes</p>
+              </div>
+              <div className="rounded-2xl border border-red-500/20 bg-red-500/8 p-4">
+                <div className="text-3xl font-semibold text-red-300 mb-1">3-4</div>
+                <p className="text-sm text-white/50">weekly failures in a 10-client agency</p>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <p className="text-sm font-medium text-white/80">Where the pattern repeats:</p>
+              {[
+                'lead qualification lacks ownership',
+                'sales promises never reach fulfillment',
+                'delivery issues surface after the client feels them'
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-3 text-sm text-white/55">
+                  <div className="mt-1.5 h-2 w-2 rounded-full bg-red-400 shadow-[0_0_12px_rgba(248,113,113,0.6)]" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <div className="relative pl-0">
+            <div className="absolute left-4 top-3 bottom-3 w-px bg-linear-to-b from-white/10 via-red-500/30 to-white/10 md:left-5" />
+
+            <div className="space-y-5 md:space-y-6">
+              {stages.map((stage, index) => (
+                <motion.div
+                  key={stage.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="relative pl-12 md:pl-16"
+                >
+                  <div className="absolute left-4 top-6 z-10 flex -translate-x-1/2 flex-col items-center md:left-5">
+                    <div className={`flex h-9 w-9 items-center justify-center rounded-xl text-sm font-semibold ${getRiskPill(stage.risk)}`}>
+                      {index + 1}
                     </div>
-                    
-                    {stage.risk !== 'low' && (
-                      <div className={`text-xs px-2 py-0.5 rounded ${getRiskTextColor(stage.risk)} bg-black/30`}>
-                        {stage.risk.toUpperCase()}
-                      </div>
+                    {index < stages.length - 1 && (
+                      <ArrowDown className="mt-3 h-4 w-4 text-white/20" />
                     )}
                   </div>
-                  
-                  {/* Failures list */}
-                  <ul className="space-y-2">
-                    {stage.failures.map((failure, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <div className={`w-1 h-1 rounded-full mt-2 shrink-0 ${getRiskTextColor(stage.risk).replace('text-', 'bg-')}`} />
-                        <span className="text-xs text-white/60 leading-relaxed">{failure}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
 
-                {/* Arrow connector (visible on lg) */}
-                {index < stages.length - 1 && (
-                  <div className="hidden lg:flex absolute -right-3 top-8 z-10">
-                    <ArrowRight className="w-5 h-5 text-white/20" />
+                  <div
+                    className={`relative overflow-hidden rounded-3xl border p-5 md:p-6 transition-all duration-300 ${getRiskColor(stage.risk)}`}
+                  >
+                    <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/18 to-transparent" />
+                    <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between mb-5">
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.24em] text-white/35 mb-2">Handoff {index + 1}</p>
+                        <h3 className="text-xl md:text-2xl font-semibold text-white">{stage.name}</h3>
+                      </div>
+
+                      <div className={`inline-flex w-fit items-center rounded-full border px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] ${getRiskBadge(stage.risk)}`}>
+                        {stage.risk}
+                      </div>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {stage.failures.map((failure, i) => (
+                        <div key={i} className="rounded-2xl border border-white/8 bg-black/18 px-4 py-3">
+                          <div className="flex items-start gap-3">
+                            <div className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${getRiskTextColor(stage.risk).replace('text-', 'bg-')}`} />
+                            <p className="text-sm text-white/68 leading-relaxed">{failure}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                )}
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
 
