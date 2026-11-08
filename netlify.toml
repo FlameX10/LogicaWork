@@ -1,0 +1,35 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Contact form email service (netlify/functions/contact.mjs -> /api/contact)
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Hashed build assets can be cached forever
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+# Old URLs from the previous site / sitemap
+[[redirects]]
+  from = "/blog/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/blog"
+  to = "/"
+  status = 301
