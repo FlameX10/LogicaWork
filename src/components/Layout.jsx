@@ -166,10 +166,20 @@ function Footer() {
           ))}
         </div>
       </div>
-      <div className="pointer-events-none select-none overflow-hidden" aria-hidden="true">
-        <p className="translate-y-[18%] text-center font-display text-[19vw] font-black leading-none tracking-tighter text-white/[.035]">
-          LOGICAWORK
-        </p>
+      {/* Wordmark: SVG + textLength so it always spans the container exactly, at any screen width */}
+      <div className="container-x pointer-events-none select-none pb-8 md:pb-10" aria-hidden="true">
+        <svg viewBox="0 0 1000 108" className="block h-auto w-full" preserveAspectRatio="xMidYMid meet">
+          <text
+            x="0"
+            y="104"
+            textLength="1000"
+            lengthAdjust="spacingAndGlyphs"
+            fill="rgba(255,255,255,.05)"
+            style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 141 }}
+          >
+            LOGICAWORK
+          </text>
+        </svg>
       </div>
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col gap-2 py-6 text-sm text-white/45 md:flex-row md:items-center md:justify-between">
