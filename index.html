@@ -2,55 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/src/assets/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- Home Page Meta Tags -->
-    <title>AI Software Development Services | LogicaWork</title>
-    <meta name="description" content="Custom AI and software development services for startups, SMBs, and enterprises. Build, scale, and automate with intelligent solutions.">
-    <meta name="keywords" content="AI software development, custom software solutions, web development services, automation, LogicaWork">
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="LogicaWork">
-    <meta property="og:description" content="Custom AI and software development services for startups, SMBs, and enterprises. Build, scale, and automate with intelligent solutions.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://logicawork.com">
-    
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="LogicaWork">
-    <meta name="twitter:description" content="Custom AI and software development services for startups, SMBs, and enterprises. Build, scale, and automate with intelligent solutions.">
-    
-    <!-- Canonical URL -->
-    <meta name="canonical" content="https://logicawork.com">
-    
-    <!-- Author and Copyright -->
-    <meta name="author" content="LogicaWork">
-    <meta name="copyright" content="LogicaWork">
-    
-    <!-- Robots Meta -->
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    
-    <!-- Language -->
-    <meta http-equiv="content-language" content="en-US">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="author" content="LogicaWork" />
     <meta name="google-site-verification" content="D5a-gDjGqfmTMFbr02h8Ypz1kUJhtze2qTmQ-O9v85I" />
-  
-     <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z68NHD1RY1"></script>
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    
-    gtag('js', new Date());
+    <!--head-->
 
-    gtag('config', 'G-Z68NHD1RY1');
-  </script>
-  
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Urbanist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+
+    <!-- Google tag (gtag.js) — page views are sent on route change by the app -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z68NHD1RY1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() { dataLayer.push(arguments) }
+      gtag('js', new Date())
+      gtag('config', 'G-Z68NHD1RY1', { send_page_view: false })
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><!--app--></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

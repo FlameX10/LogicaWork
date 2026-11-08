@@ -1,22 +1,23 @@
 {
-  "name": "frontend",
+  "name": "logicawork-website",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
     "@tailwindcss/vite": "^4.1.17",
     "framer-motion": "^10.18.0",
     "gsap": "^3.13.0",
     "lucide-react": "^0.263.1",
+    "nodemailer": "^6.10.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^7.9.4",
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
